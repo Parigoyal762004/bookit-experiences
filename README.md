@@ -1,299 +1,227 @@
-🎯 BookIt: Experiences & Slots
-A full-stack web application for booking travel experiences with real-time slot availability, built with React, TypeScript, Node.js, Express, and Containerized PostgreSQL (Docker).
+# 🎯 BookIt — Experiences & Slots
 
-✨ Features
-Frontend
-🎨 Pixel-perfect UI - Matches Figma design exactly
+A full‑stack booking platform for travel experiences with **real‑time slot availability**, built using **React, TypeScript, Node.js, Express, and PostgreSQL (Docker)**.
 
-📱 Fully Responsive - Beautiful on all devices
+---
 
-⚡ Lightning Fast - Optimized performance with Vite
+## ✨ Features
 
-🎭 Smooth Animations - Framer Motion & custom CSS
+### 🔹 Frontend
 
-🔍 Search & Filter - Find experiences easily
+* 🎨 **Pixel‑perfect UI** — matches Figma design
+* 📱 **Fully responsive** across all screens
+* ⚡ **Fast performance** powered by Vite
+* 🎭 **Smooth animations** (Framer Motion + CSS)
+* 🔍 **Search & filters** for experiences
+* 📅 **Interactive date/time picker** with live slot status
+* 💳 **Seamless checkout** with promo code validation
+* 🎉 **Confetti on successful bookings**
+* 🍞 **Toast notifications** for all actions
 
-📅 Interactive Date/Time Picker - Real-time availability
+### 🔹 Backend
 
-💳 Seamless Checkout - Promo codes & validation
+* 🚀 **REST API** — clean & documented
+* 🔒 **Transaction safe booking** (no double‑booking)
+* ✅ **Input validation** (express‑validator)
+* 🐳 **PostgreSQL via Docker** (local dev)
+* 🎟️ **Promo code support** (flat + percent)
+* 📊 **Seed data** for demo setup
 
-🎉 Success Animations - Confetti on booking confirmation
+---
 
-🍞 Toast Notifications - Real-time user feedback
+## 🛠️ Tech Stack
 
-Backend
-🚀 RESTful API - Clean and well-documented
+### Frontend
 
-🔒 Transaction Safety - Prevents double-booking
+* React 18 + TypeScript
+* Vite
+* TailwindCSS
+* React Router v6
+* Axios
+* React Hook Form + Zod
+* Framer Motion
+* Lucide Icons
 
-✅ Input Validation - Express-validator
+### Backend
 
-🐳 PostgreSQL Database - Managed and run via Docker for local development
+* Node.js + TypeScript
+* Express.js
+* PostgreSQL (Docker)
+* Express‑Validator
+* Morgan (logging)
+* CORS middleware
 
-🎟️ Promo Code System - Percentage & flat discounts
+---
 
-📊 Seed Data - Pre-populated experiences
+## 📋 Prerequisites
 
-🛠️ Tech Stack
-Frontend
-Framework: React 18 + TypeScript
+* Node.js ≥ 18
+* Docker & Docker Compose
+* npm / yarn
 
-Build Tool: Vite
+---
 
-Styling: TailwindCSS
+## 🚀 Quick Setup
 
-Routing: React Router v6
+### 1️⃣ Clone Repo
 
-HTTP Client: Axios
-
-Form Handling: React Hook Form
-
-Validation: Zod
-
-Animations: Framer Motion, Canvas Confetti
-
-Icons: Lucide React
-
-Backend
-Runtime: Node.js
-
-Framework: Express.js + TypeScript
-
-Database: PostgreSQL (Containerized via Docker)
-
-Validation: Express Validator
-
-CORS: CORS middleware
-
-Logger: Morgan
-
-📋 Prerequisites
-Node.js (v18 or higher)
-
-Docker and Docker Compose
-
-npm or yarn
-
-🚀 Quick Start (Using Docker)
-1. Clone the Repository
-   Bash
-
+```bash
 git clone https://github.com/Parigoyal762004/bookit-experiences.git
 cd bookit-experiences
-2. Backend Setup (Install and Configure)
-   Bash
+```
 
+### 2️⃣ Backend Setup
+
+```bash
 cd backend
-
-# Install dependencies
 npm install
-
-# Create .env file for local database connection
 cp .env.example .env
-(Your .env should contain the credentials matching your docker-compose.yml)
+```
 
-3. Database & Server Startup (Docker Compose)
-   Start the PostgreSQL container and the backend server. The server will automatically create the database schema.
+> Ensure `.env` DB creds match `docker-compose.yml`
 
-Bash
+### 3️⃣ Start DB & Server
 
-# From the root directory:
+```bash
 cd ..
 docker compose up -d
+```
 
-# Install backend dependencies within the container (optional, depends on your dockerfile)
-# If using npm start directly:
-# cd backend
-# npm install
-(If your docker-compose.yml runs the server, you may skip manual npm start.)
+### 4️⃣ Seed Database
 
-4. Seed Database (Populate Data)
-   Run the seed script after the schema is initialized and the server is running.
-
-Bash
-
+```bash
 cd backend
 npm run seed
-5. Start Frontend
-   Open a new terminal:
+```
 
-Bash
+### 5️⃣ Frontend Setup
 
+```bash
 cd frontend
-
-# Install dependencies
 npm install
-
-# Create .env file
 cp .env.example .env
-(Ensure frontend/.env points to http://localhost:5000/api)
+```
 
-6. Start Frontend App
-   Bash
+> Set API base URL to `http://localhost:5000/api`
 
+### 6️⃣ Start Frontend
+
+```bash
 npm run dev
+```
 
-# App runs on http://localhost:5173
-🌐 API Endpoints
-Experiences
-GET    /api/experiences              - Get all experiences
-GET    /api/experiences/:id          - Get experience by ID
-GET    /api/experiences/:id/slots    - Get available slots
-Bookings
-POST   /api/bookings                 - Create booking
-GET    /api/bookings/:id             - Get booking by ID
-GET    /api/bookings?email=...       - Get bookings by email
-Promo Codes
-POST   /api/promo/validate           - Validate promo code
-🎟️ Available Promo Codes
-SAVE10 - 10% off
+➡️ App runs at: **[http://localhost:5173](http://localhost:5173)**
 
-FLAT100 - ₹100 off
+---
 
-WELCOME20 - 20% off
+## 🌐 API Endpoints
 
-FIRSTBOOKING - ₹150 off
+### Experiences
 
-EARLYBIRD - 15% off
+| Method | Endpoint                   | Description        |
+| ------ | -------------------------- | ------------------ |
+| GET    | /api/experiences           | List experiences   |
+| GET    | /api/experiences/:id       | Experience details |
+| GET    | /api/experiences/:id/slots | Available slots    |
 
-📱 Application Flow
-Home Page - Browse and search experiences
+### Bookings
 
-Details Page - View experience details, select date & time
+| Method | Endpoint             | Description       |
+| ------ | -------------------- | ----------------- |
+| POST   | /api/bookings        | Create booking    |
+| GET    | /api/bookings/:id    | Booking details   |
+| GET    | /api/bookings?email= | Bookings by email |
 
-Checkout Page - Enter details, apply promo codes
+### Promo Codes
 
-Result Page - Booking confirmation with reference ID
+| Method | Endpoint            | Description       |
+| ------ | ------------------- | ----------------- |
+| POST   | /api/promo/validate | Verify promo code |
 
-🎨 Design
-Design follows the provided Figma specifications:
+#### 🎟️ Available Promo Codes
 
-White background with yellow (#FFD700) accents
+* `SAVE10` — 10% off
+* `FLAT100` — ₹100 off
+* `WELCOME20` — 20% off
+* `FIRSTBOOKING` — ₹150 off
+* `EARLYBIRD` — 15% off
 
-Clean, modern card-based layout
+---
 
-Responsive grid system
+## 📱 User Flow
 
-Smooth transitions and micro-interactions
+1. Browse experiences
+2. View details & pick date/time
+3. Fill checkout form + apply promo
+4. Confirm booking
+5. View success page + booking reference
 
-📦 Project Structure
+---
+
+## 📦 Folder Structure
+
+```
 bookit-experiences/
-├── frontend/
-│   ├── src/
-│   │   ├── components/      # Reusable UI components
-│   │   ├── pages/           # Route pages
-│   │   ├── services/        # API services
-│   │   ├── hooks/           # Custom React hooks
-│   │   ├── types/           # TypeScript types
-│   │   └── utils/           # Helper functions
-│   └── public/
-├── backend/
-│   ├── src/
-│   │   ├── config/          # Database & app config
-│   │   ├── controllers/     # Route controllers
-│   │   ├── routes/          # API routes
-│   │   ├── middleware/      # Custom middleware
-│   │   ├── types/           # TypeScript types
-│   │   └── server.ts        # Entry point
-│   ├── Dockerfile           # For containerizing the Node app
-│   └── package.json
-└── docker-compose.yml       # Defines services (app, db)
-🧪 Testing the Application
-Test Booking Flow:
-Visit home page: http://localhost:5173
+ ├── frontend/
+ │   └── src/
+ │       ├── components/
+ │       ├── pages/
+ │       ├── services/
+ │       ├── hooks/
+ │       ├── types/
+ │       └── utils/
+ ├── backend/
+ │   └── src/
+ │       ├── config/
+ │       ├── controllers/
+ │       ├── routes/
+ │       ├── middleware/
+ │       ├── types/
+ │       └── server.ts
+ └── docker-compose.yml
+```
 
-Click "View Details" on any experience
+---
 
-Select a date and time slot
+## 🚢 Deployment Guide
 
-Adjust guest count
+### Backend (Render/Railway — Docker)
 
-Click "Confirm Booking"
+* **Root:** `backend/`
+* Vars:
 
-Fill in details:
+  * `DATABASE_URL`
+  * `FRONTEND_URL`
 
-First Name: John
+### Frontend (Vercel/Netlify — Static)
 
-Last Name: Doe
+* **Root:** `frontend/`
+* Build: `npm run build`
+* Output: `dist/`
+* Env: `VITE_API_URL` = deployed backend URL
 
-Email: john@example.com
+---
 
-Phone: 9876543210
+## 🛠️ Troubleshooting
 
-Apply promo code: SAVE10
+| Issue             | Fix                                     |
+| ----------------- | --------------------------------------- |
+| DB not connecting | Check Docker & `.env`                   |
+| Port error        | `kill` process using 5000/5173          |
+| CORS issues       | Update backend `.env` & frontend `.env` |
 
-Agree to terms
+---
 
-Click "Pay and Confirm"
+## 📄 License
 
-See success page with booking ID
+MIT — Free for learning & use
 
-🚢 Deployment (Monorepo Docker Strategy)
-The project uses a monorepo structure and Docker, requiring two separate services for public deployment.
+---
 
-1. Backend Service (Docker)
-   Platform: Render or Railway (For Docker support and Managed PostgreSQL).
+## 👤 Author
 
-Service Type: Web Service (Docker).
+**Pari Goyal**
 
-Repository Link: Your main bookit-experiences repo.
+GitHub: `@Parigoyal762004`
 
-Root Directory: backend/
-
-Environment Variables (Required):
-
-DATABASE_URL: Public connection string from a Managed PostgreSQL service (e.g., Render Postgres).
-
-FRONTEND_URL: Public URL of your deployed frontend (e.g., https://bookit-client.vercel.app).
-
-2. Frontend Service (Static Site)
-   Platform: Vercel or Netlify.
-
-Service Type: Static Site.
-
-Repository Link: Your main bookit-experiences repo.
-
-Root Directory: frontend/
-
-Build/Output: npm run build, output directory frontend/dist.
-
-API Base URL: Update frontend/.env with the public URL of the deployed backend service.
-
-🐛 Troubleshooting
-Database Connection Error
-Bash
-
-# Check if Docker containers are running
-docker compose ps
-
-# Verify credentials in backend/.env match docker-compose.yml
-Port Already in Use
-Bash
-
-# Check process using port 5000 or 5173
-CORS Errors
-Bash
-
-# Update FRONTEND_URL in backend/.env
-# Update VITE_API_URL in frontend/.env
-📄 License
-MIT License - feel free to use this project for learning!
-
-🤝 Contributing
-This is a internship project, but feedback and suggestions are welcome!
-
-👨‍💻 Author
-Your Name
-
-GitHub: @Parigoyal762004
-
-Email: your.email@example.com
-
-🙏 Acknowledgments
-Design: Figma HD-booking template
-
-Images: Unsplash
-
-Icons: Lucide React
-
-Made with ❤️ and lots of ☕ for the HD Booking Internship Assignment
+Made with ❤️ and ☕ during the HD Booking Internship challenge.
