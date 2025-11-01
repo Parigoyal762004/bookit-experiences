@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  # The name of your database service (use this name for DB_HOST in your .env)
+  db:
+    image: postgres:15-alpine
+    container_name: bookit_postgres_db
+    # This restarts the container if it stops for some reason
+    restart: always
+    environment:
+      # !! CHANGE THESE TO YOUR PREFERRED VALUES !!
+      POSTGRES_USER: bookit_user
+      POSTGRES_PASSWORD: strong_password
+      POSTGRES_DB: bookit_db
+    ports:
+      # Maps the container's port 5432 to your local machine's port 5432
+      - "5432:5432"
+    volumes:
+      # Persist the database data even if the container is stopped/removed
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
